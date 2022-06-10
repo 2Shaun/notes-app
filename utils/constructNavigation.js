@@ -20,6 +20,6 @@ const recursiveReaddir = async (path) => {
   );
 };
 
-recursiveReaddir("../app/routes").then((data) => {
-  fs.writeFileSync("../app/data.json", JSON.stringify(data, null, 2), "utf-8");
+recursiveReaddir("./app/routes").then((data) => {
+  fs.writeFileSync("./app/data.json", JSON.stringify(data, null, 2), "utf-8");
 });

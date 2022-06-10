@@ -10,4 +10,4 @@ workers_dev = true
 bucket = "./public"
 
 [build]
-command = "npm run build"
+command = "yarn build"
