@@ -12,6 +12,7 @@ build-job:
   artifacts:
     paths:
       - "public/"
+      - "node_modules/"
     expire_in: 2 hours
 
 deploy-job:
