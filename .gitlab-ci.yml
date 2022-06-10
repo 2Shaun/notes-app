@@ -2,18 +2,18 @@ stages:
   - build
   - deploy
 
-#build-job:
-#  image: node:18
-#  stage: build
-#  script:
-#    - npm i yarn
-#    - yarn
-#    - npm run build
-#  artifacts:
-#    paths:
-#      - "public/"
-#      - "node_modules/"
-#    expire_in: 2 hours
+build-job:
+  image: node:18
+  stage: build
+  script:
+    - npm i yarn
+    - yarn
+    - npm run build
+  artifacts:
+    paths:
+      - "public/"
+      - "node_modules/"
+    expire_in: 2 hours
 
 deploy-job:
   image: node:18
@@ -21,14 +21,9 @@ deploy-job:
   secrets:
     CLOUDFLARE_API_TOKEN:
       vault: cloudflare/worker_api_token@kv
-    TEST_ENV_VAR:
-      vault: 
-        engine:
-          name: kv-v2
-          path: kv
-        path: test/hello/world
-        field: find_me
+      file: false
+    CLOUDFLARE_ACCOUNT_ID:
+      vault: cloudflare/worker_account_id@kv
+      file: false
   script:
-    #- echo $CI_JOB_JWT
-    - cat $TEST_ENV_VAR
-    #- npx wrangler publish
+    - npx wrangler publish
