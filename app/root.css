@@ -57,6 +57,7 @@ body {
   left: 0;
   top: 0;
   right: auto;
+  overflow-y: scroll;
 }
 
 .sidepanel-open {

@@ -1,12 +1,8 @@
 # Notes App built with Remix
 
-## Why Remix?
-
-After becoming accustomed to writing notes in Latex and Markdown, I wanted a public site to access the rendered content. The goal was to make the `./app/routes/` directory the same as my local `~/notes` directory. I wanted the Latex, Markdown, and image content to be publicly accessible without changing my note-taking workflow. Remix seemed like the right tool for the job.
-
 ## Technical Details
 
-**`recursiveReaddir`** - accepts a path and creates a `File[]` array where
+**`recursiveReaddir`** - accepts a path and uses `fs.readdir` to create a `.json` file containing a `File[]` array where
 
 ```ts
 type File = {
@@ -15,9 +11,9 @@ type File = {
 };
 ```
 
-I use `fs.readdir` to read the contents of `~/routes` and render the side navigation panel server-side. If it's a directory, `contents` will contain the files inside. If it's not a directory, `contents` will be `[]`.
+`recursiveReaddir` is ran at build time to read the contents of `~/routes` and construct a file called `data.json` representing the file structure of `~/routes`. This file is then passed into the navigation panel which is rendered server-side. If it's a directory, `contents` will contain the files inside. If it's not a directory, `contents` will be `[]`.
 
-`RecursiveAccordion` accepts this recursive structure, calling
+`RecursiveAccordion` accepts this recursive structure defined in `data.json`, calling
 
 ```js
 <Accordion>
@@ -28,7 +24,7 @@ I use `fs.readdir` to read the contents of `~/routes` and render the side naviga
 if it is a directory and
 
 ```js
-<Link>{filename}</Link>
+<Link>{file.name}</Link>
 ```
 
-if it is a markdown file.
+if it is a markdown file. [MDX](https://mdxjs.com/) will turn the markdown files (parsing LaTeX) into javascript bundles which Remix will serve at the `Link`s. These bundles will be cached at Cloudflare HTTP edge servers.
