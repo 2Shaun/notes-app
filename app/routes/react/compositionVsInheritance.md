@@ -1,0 +1,1 @@
+- a dropdown wouldn't know its components ahead of time

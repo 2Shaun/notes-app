@@ -1,0 +1,3 @@
+- scheduled backups should be done when load is low
+- all transactions should be completed before failover
+- develop root cause analysis of data corruption

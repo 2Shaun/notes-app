@@ -1,0 +1,2 @@
+- `gitlab.com/-/jwks` contains information (pub keys) that vault can use to verify JWTs
+- vault is configured by doing a `vault write` with this URL after enabling `jwt` as an `auth` method

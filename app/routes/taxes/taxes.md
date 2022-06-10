@@ -1,0 +1,2 @@
+- businesses withhold tax to avoid underpayment fees to the government
+- tax witheld is an interest free loan to the government which is paid back at tax season

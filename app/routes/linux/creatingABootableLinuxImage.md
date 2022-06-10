@@ -1,0 +1,6 @@
+- insert USB stick and run `dmesg`. you should see an output for which directory it was mapped to: `dev/sdX`
+  - `dmesg` outputs the **kernel ring buffer** which logs kernel operations
+- run `cp _.iso /dev/sdX`
+  - notice that there is no number after the `X`, this means that it is not copied to a partition but to the whole disk device
+- run `sync`
+  - since unix writes data asynchronously, sometimes data is in the buffer (volatile memory) waiting for the optimal time to write. this flushes the buffer and writes all data to disk

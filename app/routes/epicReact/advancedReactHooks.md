@@ -1,0 +1,8 @@
+- `createContext` returns an object which exposes the `Provider` component for that object
+- a wrapper provider can be made which populates the `Provider`'s value from custom hooks
+- the `children` prop of the wrapper provider should be forwarded to the actual `Provider` so that these providers can expose context to children consumers
+- children consumers may obtain this value by calling `useContext` on the original value returned by `createContext`
+- when passing functions in dependency lists, `useCallback` becomes useful to avoid unnecessary rerenders
+- `dispatch` comes from `useReducer`, which means it is defined within a React component
+  - defining a function which accepts dispatch allows you to bypass component flow (dependency drilling) by only returning `dispatch` from your hook and calling it as `increment(dispatch)` instead of `increment()` (which would call dispatch). again, this keeps you from defining a bunch of functions which call dispatch and are dependent on component flow
+- returning a bunch of helper methods in an object create junk for the sake of superficially nicer syntax

@@ -1,0 +1,4 @@
+- packages are a way to create namespaces and modularize programs
+- each package contains one package object, which contain definitions that are part of the package
+- how do you utilize the main method of a package?
+- running `scalac helloWorld.scala` creates a `HelloWorld.class` file that can be ran with `scala HelloWorld`

@@ -1,0 +1,2 @@
+- the executor is the environment that the runner runs in, windows, linux, docker (docker in docker)
+- 

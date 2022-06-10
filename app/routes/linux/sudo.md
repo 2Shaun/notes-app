@@ -1,0 +1,4 @@
+- `/etc/passwd` holds users
+  - `username:password:user id:primary group id:
+- `/etc/group` holds groups
+- security policies are defined by `/etc/sudoers` or LDAP

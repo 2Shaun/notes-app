@@ -1,0 +1,3 @@
+- many scientific fields inject a random component which just represents some phenomenon that they don't have time or capabilities to measure. in nueroscience for example, thermal noise caused by quantum mechanical events at the molecular level that are getting chaotically amplified by a butterfly effect
+- would showing a probability distribution of choices you could possibly make take away your free will
+- making a measurement is inherently a destructive operation
