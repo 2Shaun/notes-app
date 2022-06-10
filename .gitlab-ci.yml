@@ -24,7 +24,7 @@ deploy-job:
     TEST_ENV_VAR:
       vault: 
         engine:
-          name: kv
+          name: kv-v2
           path: kv
         path: test/hello/world
         field: find_me
