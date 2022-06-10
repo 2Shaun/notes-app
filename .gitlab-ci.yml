@@ -30,5 +30,9 @@ deploy-job:
         field: find_me
   script:
     #- echo $CI_JOB_JWT
-    - echo "$TEST_ENV_VAR"
+    - echo $TEST_ENV_VAR
+    - export VAULT_ADDR="https://vault-cluster-public-vault-e46742df.7e694688.z1.hashicorp.cloud:8200"
+    - export VAULT_TOKEN="$(vault write -field=token auth/jwt/login role=notes-app jwt=$CI_JOB_JWT)"
+    - export TEST_ENV_VAR="$(vault kv get -field=find_me kv/test/hello/world)"
+    - echo $TEST_ENV_VAR
     #- npx wrangler publish
