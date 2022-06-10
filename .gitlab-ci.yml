@@ -2,18 +2,18 @@ stages:
   - build
   - deploy
 
-build-job:
-  image: node:18
-  stage: build
-  script:
-    - npm i yarn
-    - yarn
-    - npm run build
-  artifacts:
-    paths:
-      - "public/"
-      - "node_modules/"
-    expire_in: 2 hours
+#build-job:
+#  image: node:18
+#  stage: build
+#  script:
+#    - npm i yarn
+#    - yarn
+#    - npm run build
+#  artifacts:
+#    paths:
+#      - "public/"
+#      - "node_modules/"
+#    expire_in: 2 hours
 
 deploy-job:
   image: node:18
@@ -24,6 +24,6 @@ deploy-job:
     TEST_ENV_VAR:
       vault: test/hello/world/key@kv
   script:
-    - echo $CI_JOB_JWT
+    #- echo $CI_JOB_JWT
     - echo $TEST_ENV_VAR
-    - npx wrangler publish
+    #- npx wrangler publish

@@ -69,3 +69,8 @@ body {
   visibility: hidden;
   transform: translateX(-100%);
 }
+
+.accordion {
+  padding: 0;
+  border: 0;
+}

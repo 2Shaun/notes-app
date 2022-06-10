@@ -21,14 +21,13 @@ export const links: LinksFunction = () => {
   return [
     { rel: "stylesheet", href: rootStylesheetUrl },
     { rel: "stylesheet", href: katexStylesheetUrl },
-    // NOTE: Architect deploys the public directory to /_static/
-    { rel: "icon", href: "/_static/favicon.ico" },
+    { rel: "icon", href: "/favicon.png" },
   ];
 };
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
-  title: "Remix Notes",
+  title: "Notes",
   viewport: "width=device-width,initial-scale=1",
 });
 
