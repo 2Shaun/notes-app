@@ -30,5 +30,5 @@ deploy-job:
         field: find_me
   script:
     #- echo $CI_JOB_JWT
-    - echo $TEST_ENV_VAR
+    - echo "$TEST_ENV_VAR"
     #- npx wrangler publish
