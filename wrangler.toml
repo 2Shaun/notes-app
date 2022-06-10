@@ -3,7 +3,6 @@ type = "javascript"
 main= "./build/index.js"
 compatibility_date = "2022-06-09"
 
-account_id = "381e86dc6a02642acf94fe58045e085f"
 workers_dev = true
 
 [site]
