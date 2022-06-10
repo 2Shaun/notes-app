@@ -22,7 +22,12 @@ deploy-job:
     CLOUDFLARE_API_TOKEN:
       vault: cloudflare/worker_api_token@kv
     TEST_ENV_VAR:
-      vault: test/hello/world/find_me@kv
+      vault: 
+        engine:
+          name: kv-v2
+          path: kv
+        path: test/hello/world
+        field: find_me
   script:
     #- echo $CI_JOB_JWT
     - echo $TEST_ENV_VAR
