@@ -1,0 +1,71 @@
+:root {
+  --sidepanel-width: 250px;
+}
+
+.main-content {
+  margin-left: 5px;
+}
+
+.margin-sidepanel-open {
+  margin-left: var(--sidepanel-width);
+}
+
+.margin-animation {
+  transition: margin 0.5s ease;
+}
+
+.margin-sidepanel-close {
+  margin-left: 0;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  display: flex;
+  margin: 0;
+}
+
+.panel-close {
+  max-height: 0;
+  overflow: hidden;
+}
+
+.panel-open {
+  max-height: auto;
+}
+
+.panel-animation {
+  transition: max-height 0.2s ease-out;
+}
+
+.expander {
+  z-index: 1000;
+  padding: 0;
+  border-width: 0;
+  background-color: rgb(73, 167, 255);
+  height: 100%;
+  font-size: large;
+}
+
+.sidepanel {
+  width: var(--sidepanel-width);
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: auto;
+}
+
+.sidepanel-open {
+  transition: transform 0.5s ease;
+  transform: translateX(0%);
+}
+
+.sidepanel-close {
+  transition: transform 0.5s ease, visibility 0.5s;
+  visibility: hidden;
+  transform: translateX(-100%);
+}

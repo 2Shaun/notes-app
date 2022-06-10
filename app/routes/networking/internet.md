@@ -1,0 +1,1 @@
+- optical fiber cables are entrenched into the seafloor which carry light pulses overseas. when the light pulses reach your router/cell tower, it's converted to electrical signals/electromagnetic waves for your nic

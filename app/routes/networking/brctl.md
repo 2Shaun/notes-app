@@ -1,0 +1,1 @@
+**bridge** - traffic is forwarded among ports of the bridge as if there is one ethernet connecting the endpoints (the bridge will not show in `traceroute`)

@@ -1,0 +1,28 @@
+stages:
+  - build
+  - deploy
+
+build-job:
+  image: node:18
+  stage: build
+  script:
+    - npm i yarn
+    - yarn
+    - npm run build
+  artifacts:
+    paths:
+      - "public/"
+    expire_in: 2 hours
+
+deploy-job:
+  image: node:18
+  stage: deploy
+  secrets:
+    CLOUDFLARE_API_TOKEN:
+      vault: cloudflare/worker_api_token@kv
+    TEST_ENV_VAR:
+      vault: test/hello/world/key@kv
+  script:
+    - echo $CI_JOB_JWT
+    - echo $TEST_ENV_VAR
+    - npx wrangler publish

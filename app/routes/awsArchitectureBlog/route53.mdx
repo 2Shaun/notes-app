@@ -1,0 +1,35 @@
+import diagram from "~/images/route53.drawio.png";
+
+[A Case Study in Global Fault Isolation](https://aws.amazon.com/blogs/architecture/a-case-study-in-global-fault-isolation/)
+
+- a stripe represents all nameservers in one TLD
+  - ns-1.awsdns-1.com
+  - ns-2.awsdns-1.com
+  - ...
+
+**hosted zone** - container for records, how to route traffic for a _specific domain_, e.g., example.com (and its subdomains acme.example.com, zenith.example.com, etc.)
+
+- if the twitch.tv hosted zone had ns-584.awsdns-09.net (205.251.194.72), a twitch user could be sent to an edge location in Florida, Western Europe, or Japan (depending on anycast routing)
+- each Route 53 edge location is responsible for serving the traffic for one or more stripes (but usually only one stripe)
+- deployments are done in stripe (TLD) order, so if bad software is deployed causing an edge location to not respond, other edge locations will still work
+
+**anycast routing** - generally brings the user to destination requiring lowest network latency
+
+# comparison with Cloudflare
+
+2shaun.productions uses Cloudflare as a nameserver, i.e., `hostname -t ns 2shaun.productions` returns:
+
+- hassan.ns.cloudflare.com
+- zelda.ns.cloudflare.com
+
+twitch.tv likely uses Route53, i.e., `hostname -t ns twitch.tv` returns:
+
+- ns-1450.awsdns-53.org
+- ns-1778.awsdns-30.co.uk
+- ns-219.awsdns-27.com
+- ns-664.awsdns-19.net
+
+  these 4 nameservers were chosen by shuffle sharding. this means that although `hostname -t ns netflix.com` may return ns-1450.awsdns-53.org, it is highly unlikely that it will overlap across all 4 TLDs (stripes)
+  since edge locations typically only serve one stripe, it is less likely that twitch will have DNS issues as they can rely on .co.uk and .org edges
+
+<img src={diagram} />

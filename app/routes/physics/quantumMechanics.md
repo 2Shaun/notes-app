@@ -1,0 +1,1 @@
+- $\braket{\phi|\psi}$ represents the the dual vector (linear functional) of $\phi$ applied to $\psi$.
